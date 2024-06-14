@@ -1,4 +1,4 @@
-package org.sang.backendecommerce.service;
+package org.sang.backendecommerce.service.imp;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,6 +6,7 @@ import org.sang.backendecommerce.dto.model.UserDTO;
 import org.sang.backendecommerce.mapper.UserMapper;
 import org.sang.backendecommerce.model.User;
 import org.sang.backendecommerce.repository.UserRepository;
+import org.sang.backendecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImp implements UserService{
+public class UserServiceImp implements UserService {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
 

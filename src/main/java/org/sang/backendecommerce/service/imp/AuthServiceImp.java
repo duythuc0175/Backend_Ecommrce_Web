@@ -1,12 +1,21 @@
-package org.sang.backendecommerce.service;
+package org.sang.backendecommerce.service.imp;
 
 import org.hibernate.query.IllegalQueryOperationException;
+import org.sang.backendecommerce.dto.model.UserDTO;
+import org.sang.backendecommerce.dto.request.SigninResponseDTO;
+import org.sang.backendecommerce.mapper.UserMapper;
+import org.sang.backendecommerce.model.UserRole;
+import org.sang.backendecommerce.service.AuthService;
+import org.sang.backendecommerce.service.JwtService;
+import org.sang.backendecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-public class AuthServiceImp implements AuthService{
+@Service
+public class AuthServiceImp implements AuthService {
 
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
@@ -14,7 +23,8 @@ public class AuthServiceImp implements AuthService{
 	private final JwtService jwtService;
 
 	@Autowired
-	public AuthServiceImpl(UserService userService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JWTService jwtService) {
+	public AuthServiceImp(UserService userService, PasswordEncoder passwordEncoder,
+			AuthenticationManager authenticationManager, JwtService jwtService) {
 		this.userService = userService;
 		this.passwordEncoder = passwordEncoder;
 		this.authenticationManager = authenticationManager;

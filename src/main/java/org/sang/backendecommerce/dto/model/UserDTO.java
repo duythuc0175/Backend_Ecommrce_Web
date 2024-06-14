@@ -14,6 +14,7 @@ public class UserDTO {
 	private String email;
 	private String password;
 	private UserRole role;
+
 	public UserDTO update(UserDTO newUserDTO) {
 		if (newUserDTO.getName() != null) {
 			this.setName(newUserDTO.getName());

@@ -1,4 +1,4 @@
-package org.sang.backendecommerce.service;
+package org.sang.backendecommerce.service.imp;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,8 +8,11 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
+import org.sang.backendecommerce.service.JwtService;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
+@Service
 public class JwtServiceImp implements JwtService {
 	@Override
 	public String generateToken(UserDetails userDetails){

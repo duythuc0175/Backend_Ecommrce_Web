@@ -6,8 +6,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.project.ecommercebackend.service.service.JWTService;
-import org.project.ecommercebackend.service.service.UserService;
+import org.sang.backendecommerce.service.JwtService;
+import org.sang.backendecommerce.service.UserService;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,10 +20,10 @@ import java.io.IOException;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
-	private final JWTService jwtService;
+	private final JwtService jwtService;
 	private final UserService userService;
 
-	public JWTAuthFilter(JWTService jwtService, UserService userService) {
+	public JwtAuthFilter(JwtService jwtService, UserService userService) {
 		this.jwtService = jwtService;
 		this.userService = userService;
 	}
