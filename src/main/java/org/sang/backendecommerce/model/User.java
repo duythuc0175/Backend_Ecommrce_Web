@@ -8,18 +8,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
+@Setter
+@Getter
 @Entity
 @Table(name = "users")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,14 +34,20 @@ public class User implements UserDetails {
 	@Column(nullable = false)
 	private UserRole role;
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(role.name()));
+	public User() {
+	}
+
+	public User(Long id, String name, String email, String password, UserRole role) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.role = role;
 	}
 
 	@Override
-	public String getPassword() {
-		return password;
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority(role.name()));
 	}
 
 	@Override
@@ -71,8 +74,5 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
-
-
 
 }

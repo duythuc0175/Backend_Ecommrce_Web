@@ -3,16 +3,17 @@ package org.sang.backendecommerce.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 import java.util.List;
 
+@Setter
+@Getter
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "orders")
 public class Order {
 	@Id
@@ -38,4 +39,18 @@ public class Order {
 
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderProduct> orderProducts;
+
+	public Order() {
+	}
+
+	public Order(Long id, Long userId, Double total, String address, String paymentMethod, Date date, List<OrderProduct> orderProducts) {
+		this.id = id;
+		this.userId = userId;
+		this.total = total;
+		this.address = address;
+		this.paymentMethod = paymentMethod;
+		this.date = date;
+		this.orderProducts = orderProducts;
+	}
+
 }
