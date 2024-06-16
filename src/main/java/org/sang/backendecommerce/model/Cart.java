@@ -2,17 +2,14 @@ package org.sang.backendecommerce.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "carts")
 public class Cart {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -25,5 +22,15 @@ public class Cart {
 
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Set<CartProduct> cartProducts;
+
+	public Cart() {
+	}
+
+	public Cart(Long id, Long userId, Double total, Set<CartProduct> cartProducts) {
+		this.id = id;
+		this.userId = userId;
+		this.total = total;
+		this.cartProducts = cartProducts;
+	}
 
 }

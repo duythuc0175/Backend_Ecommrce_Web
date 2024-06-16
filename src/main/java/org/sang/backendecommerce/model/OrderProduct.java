@@ -3,12 +3,13 @@ package org.sang.backendecommerce.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "order_products")
 public class OrderProduct {
 	@Id
@@ -33,4 +34,18 @@ public class OrderProduct {
 	@ManyToOne
 	@JoinColumn(name = "order_id", nullable = false, updatable = false)
 	private Order order;
+
+	public OrderProduct() {
+	}
+
+	public OrderProduct(Long id, Long productId, String name, String imageUrl, Double price, int quantity, Order order) {
+		this.id = id;
+		this.productId = productId;
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.price = price;
+		this.quantity = quantity;
+		this.order = order;
+	}
+
 }
